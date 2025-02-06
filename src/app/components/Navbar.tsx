@@ -13,7 +13,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed w-full h-24 shadow-xl bg-white">
-      <div className="flex justify-between items-center h-full w-full px-4 2x1:px-16">
+      <div className="flex justify-between items-center h-full w-full px-4 pl-20 2x1:px-16">
         <Link href='/'>
           <Image
             src="/logo.png"
@@ -25,17 +25,17 @@ const Navbar = () => {
           />
         </Link>
         <div>
-          <ul className="hidden sm:flex">
-            <li className="ml-10 uppercase hover:border-b text-xl">
+          <ul className="hidden sm:flex pr-20">
+            <li className="ml-10 hover:border-b text-xl">
               <Link href="/Home">Home</Link>
             </li>
-            <li className="ml-10 uppercase hover:border-b text-xl">
+            <li className="ml-10 hover:border-b text-xl">
               <Link href="/About">About</Link>
             </li>
-            <li className="ml-10 uppercase hover:border-b text-xl">
+            <li className="ml-10 hover:border-b text-xl">
               <Link href="/Contact">Contact</Link>
             </li>
-            <li className="ml-10 uppercase hover:border-b text-xl">
+            <li className="ml-10 hover:border-b text-xl">
               <Link href="/Blog">Blog</Link>
             </li>
           </ul>
@@ -55,6 +55,16 @@ const Navbar = () => {
           </div>
         </div>
         <div className="flex-col py-4">
+        <Link href='/'>
+          <Image
+            src="/logo.png"
+            alt="Logo"
+            width="105"
+            height="75"
+            className="cursor-pointer pt-6 py-4"
+            priority
+          />
+        </Link>
           <ul>
             <li onClick={() => setMenuOpen(false)} className="py-4 cursor-pointer">
               <Link href="/">Home</Link>
@@ -75,16 +85,6 @@ const Navbar = () => {
           <AiOutlineLinkedin size={30} className="cursor-pointer" />
           <AiOutlineGithub size={30} className="cursor-pointer" />
         </div>
-        <Link href='/'>
-          <Image
-            src="/logo.png"
-            alt="Logo"
-            width="105"
-            height="75"
-            className="cursor-pointer pt-6 pl-3"
-            priority
-          />
-        </Link>
       </div>
     </nav>
   );
