@@ -26,16 +26,16 @@ const Navbar = () => {
     </Link>
     <div className="hidden lg:flex pr-10">
       <ul className="flex">
-        <li className="ml-10 hover:border-b text-xl">
+        <li className="ml-10 hover:border-b hover:text-purple-500 text-xl">
           <Link href="/Home">Home</Link>
         </li>
-        <li className="ml-10 hover:border-b text-xl">
+        <li className="ml-10 hover:border-b hover:text-purple-500 text-xl">
           <Link href="/About">About</Link>
         </li>
-        <li className="ml-10 hover:border-b text-xl">
+        <li className="ml-10 hover:border-b hover:text-purple-500 text-xl">
           <Link href="/Contact">Contact</Link>
         </li>
-        <li className="ml-10 hover:border-b text-xl">
+        <li className="ml-10 hover:border-b hover:text-purple-500 text-xl">
           <Link href="/Blog">Blog</Link>
         </li>
       </ul>
