@@ -5,14 +5,14 @@ const Hero = () => {
   return (
     <div>
       <Sidebar />
-      <div className="w-full min-h-screen bg-stone-50 text-white flex flex-col justify-center">
+      <div className="w-full min-h-[90vh] bg-stone-50 text-white flex flex-col justify-center">
         <div className="w-4/5 mx-auto px-6 md:px-8 pt-16 grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-12">
           {/* Left Side: Text Content */}
           <div className="text-center md:pt-8 lg:text-left">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-black">
               Olive Uzoma
             </h1>
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-violet-400">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-400">
               Frontend Developer
             </h2>
             <p className="text-neutral-800 text-base md:text-lg mt-4 leading-relaxed">
