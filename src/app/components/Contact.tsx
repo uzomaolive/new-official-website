@@ -8,9 +8,7 @@ export default function Contact() {
       <p className="text-purple-400 text-sm sm:text-base mb-2">What is Next?</p>
       <h2 className="text-4xl font-bold text-violet-600 mb-4">Get In Touch</h2>
       <p className="ttext-gray-700 max-w-lg mb-8">
-        Although I’m not currently looking for any new opportunities, my inbox is always open. 
-        Whether you have a question or just want to say hi, I’ll try my best to get back to you!
-      </p>
+      Got a question, an idea, or just want to chat? Do not hestitate, I would love to hear from you!</p>
       
       <a
         href="mailto:uzoma.olive.c@gmail.com"
@@ -20,8 +18,6 @@ export default function Contact() {
       >
         Say Hello
       </a>
-
-      {/* New "Get In Touch" Section Below */}
       
     </section>
   );
