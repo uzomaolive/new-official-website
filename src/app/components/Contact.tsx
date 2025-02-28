@@ -8,7 +8,7 @@ export default function Contact() {
       <p className="text-purple-400 text-sm sm:text-base mb-2">What is Next?</p>
       <h2 className="text-4xl font-bold text-violet-600 mb-4">Get In Touch</h2>
       <p className="ttext-gray-700 max-w-lg mb-8">
-      Got a question, an idea, or just want to chat? Don't hestitate, I'd love to hear from you!</p>
+      Got a question, an idea, or just want to chat? Don't hestitate, I would love to hear from you!</p>
       
       <a
         href="mailto:uzoma.olive.c@gmail.com"
