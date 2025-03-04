@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { siteMetaData } from "../config/siteMetaData"; // Import site metadata
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,10 +14,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio Website",
-  description: "A modern and responsive web experience built with Next.js.",
+  title: siteMetaData.title,
+  description: siteMetaData.description,
+  openGraph: {
+    title: siteMetaData.title,
+    description: siteMetaData.description,
+    url: siteMetaData.siteUrl,
+    siteName: siteMetaData.title,
+    locale: siteMetaData.locale,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: siteMetaData.author.linkedin,
+    creator: siteMetaData.author.github,
+  },
   icons: {
-    icon: "/favicon-32x32.png", // Add this line to specify the favicon
+    icon: "/favicon-32x32.png",
   },
 };
 

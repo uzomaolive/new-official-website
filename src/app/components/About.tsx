@@ -2,6 +2,7 @@
 import React from "react";
 import { FaBriefcase, FaClock } from "react-icons/fa"; // Icons for stats
 
+
 export default function About() {
   return (
     <section className="w-full  min-h-[90vh] flex items-center bg-white py-16 px-6 lg:px-12">
