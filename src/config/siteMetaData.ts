@@ -8,5 +8,6 @@ export const siteMetaData = {
       linkedin: "@olive-uzoma",
       github: "github.com/uzomaolive", 
       email: "uzoma.olive.c@gmail.com",
+      twitter: "olive-uzoma",
     },
-}
+};
