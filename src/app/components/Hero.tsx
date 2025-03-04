@@ -1,5 +1,7 @@
 import React from "react";
-import Sidebar from "./Sidebar"; // Ensure the import path is correct
+import Sidebar from "./Sidebar"; 
+import Image from "next/image";
+
 
 const Hero = () => {
   return (
@@ -26,7 +28,7 @@ const Hero = () => {
 
           {/* Right Side: Image */}
           <div className="flex justify-center lg:justify-end px-4 lg:pr-20">
-            <img 
+            <Image
               src="/hero-image.jpg" 
               alt="Olive Uzoma" 
               className="w-full max-w-[350px] md:max-w-[400px] h-auto object-cover rounded-xl shadow-lg border border-[#1E1E1E]"
