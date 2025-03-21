@@ -24,13 +24,13 @@ const Navbar = () => {
               <Link href="/Home">Home</Link>
             </li>
             <li className="ml-10 hover:border-b hover:text-purple-500 text-xl">
-              <Link href="/About">About</Link>
+              <Link href="/about">About</Link>
             </li>
             <li className="ml-10 hover:border-b hover:text-purple-500 text-xl">
-              <Link href="/Contact">Contact</Link>
+              <Link href="/contact">Contact</Link>
             </li>
             <li className="ml-10 hover:border-b hover:text-purple-500 text-xl">
-              <Link href="/Blog">Blog</Link>
+              <Link href="/blog">Blog</Link>
             </li>
           </ul>
         </div>
@@ -58,13 +58,13 @@ const Navbar = () => {
               <Link href="/">Home</Link>
             </li>
             <li onClick={() => setMenuOpen(false)} className="py-4 cursor-pointer">
-              <Link href="/About">About</Link>
+              <Link href="/about">About</Link>
             </li>
             <li onClick={() => setMenuOpen(false)} className="py-4 cursor-pointer">
-              <Link href="/Contact">Contact</Link>
+              <Link href="/contact">Contact</Link>
             </li>
             <li onClick={() => setMenuOpen(false)} className="py-4 cursor-pointer">
-              <Link href="/Blog">Blog</Link>
+              <Link href="/blog">Blog</Link>
             </li>
           </ul>
         </div>
