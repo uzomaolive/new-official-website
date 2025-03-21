@@ -11,7 +11,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed w-full h-24 shadow-xl bg-white">
+    <nav className="fixed w-full h-24 shadow-xl bg-white" style={{ zIndex: 1 }}>
       <div className="flex justify-between items-center h-full w-full px-4 lg:px-16">
         <Link href='/'>
           <span className="text-2xl font-bold cursor-pointer text-purple-600 "style={{ fontFamily: 'cursive' }}>
