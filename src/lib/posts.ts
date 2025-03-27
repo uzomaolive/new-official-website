@@ -5,7 +5,7 @@ import slugify from "slugify"; // Converts titles into URL-friendly slugs
 import readingTime from "reading-time"; // Calculates estimated reading time for the content
 
 // Define the directory where blog posts are stored
-const postsDirectory = path.join(process.cwd(), "blog"); // Resolves to the absolute path of the "blog" folder
+const postsDirectory = path.join(process.cwd(), "bloglist"); // Resolves to the absolute path of the "blog" folder
 
 // Function to get all blog posts
 export function getAllPosts() {
