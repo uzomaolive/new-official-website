@@ -19,7 +19,9 @@
     "react-dom": "^19.0.0",
     "react-icon": "^1.0.0",
     "react-icons": "^5.4.0",
+    "react-markdown": "^10.1.0",
     "reading-time": "^1.5.0",
+    "rehype-raw": "^7.0.0",
     "slugify": "^1.6.6"
   },
   "devDependencies": {
