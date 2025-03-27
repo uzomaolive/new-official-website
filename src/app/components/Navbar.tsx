@@ -21,7 +21,7 @@ const Navbar = () => {
         <div className="hidden lg:flex pr-10">
           <ul className="flex">
             <li className="ml-10 hover:border-b hover:text-purple-500 text-xl">
-              <Link href="/Home">Home</Link>
+              <Link href="/">Home</Link>
             </li>
             <li className="ml-10 hover:border-b hover:text-purple-500 text-xl">
               <Link href="/about">About</Link>
