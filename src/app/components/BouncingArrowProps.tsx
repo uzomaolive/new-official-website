@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 
 interface BouncingArrowProps {
@@ -25,7 +25,7 @@ const BouncingArrow: React.FC<BouncingArrowProps> = ({ className }) => {
     }, 1000);
 
     return () => clearInterval(interval); // Cleanup on unmount
-  }, []);
+  }, [colors]); // ✅ Add `colors` as a dependency
 
   return (
     <div className="flex justify-center">
