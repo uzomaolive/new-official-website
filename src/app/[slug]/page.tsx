@@ -1,55 +1,32 @@
 import { Metadata } from "next";
-import { getPostBySlug, getAllPosts } from "@/lib/posts";
-import AuthorBlob from "@/app/components/AuthorBlob";
-import { siteMetaData } from "@/config/siteMetaData";
+import { getPostBySlug } from "@/lib/posts";
 import { notFound } from "next/navigation";
-import Markdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
+import { MDXRemote } from 'next-mdx-remote/rsc';
+import Image from "next/image";
 
-type Post = {
-  slug: string;
-  content: string;
-  frontmatter: {
-    title: string;
-    date: string;
-    featured_image?: string;
-    author_image?: string;
-    author?: string;
-    tags?: string[];
-  };
-  readingTime: {
-    text: string;
-  };
-};
-
-export async function generateStaticParams() {
-  const posts = getAllPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
-}
-
-export async function generateMetadata({ params }: any): Promise<Metadata> {
-  const { slug } = params;
-  const post = getPostBySlug(slug);
+// Disable TypeScript checking for Next.js page props
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function generateMetadata(props: any): Promise<Metadata> {
+  const { slug } = props.params;
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     notFound();
   }
 
   return {
-    title: `${post.frontmatter.title} - Olive Uzoma`,
-    description: post.frontmatter.excerpt,
+    title: `${post.frontmatter?.title ?? "Untitled"} - Olive Uzoma`,
+    description: post.frontmatter?.excerpt ?? "",
     openGraph: {
-      url: `https://oliveuzoma.com/${post.slug}`,
-      title: post.frontmatter.title,
-      description: post.frontmatter.excerpt,
+      url: `https://oliveuzoma.com/${post.slug ?? ""}`,
+      title: post.frontmatter?.title ?? "Untitled",
+      description: post.frontmatter?.excerpt ?? "",
       images: [
         {
-          url: post.frontmatter.featured_image,
+          url: post.frontmatter?.featured_image ?? "",
           width: 800,
           height: 600,
-          alt: post.frontmatter.title,
+          alt: post.frontmatter?.title ?? "Blog Post Image",
         },
       ],
       siteName: "Olive Uzoma",
@@ -57,63 +34,130 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
     twitter: {
       creator: "@oliveuzoma",
       card: "summary_large_image",
-      title: `${post.frontmatter.title} - Olive Uzoma`,
-      description: post.frontmatter.excerpt,
+      title: `${post.frontmatter?.title ?? "Untitled"} - Olive Uzoma`,
+      description: post.frontmatter?.excerpt ?? "",
       images: {
-        url: post.frontmatter.featured_image,
-        alt: post.frontmatter.title,
+        url: post.frontmatter?.featured_image ?? "",
+        alt: post.frontmatter?.title ?? "Blog Post Image",
       },
     },
   };
 }
 
-export default async function BlogPost({ params }: any) {
-  const { slug } = await params;
-  const post = getPostBySlug(slug);
+// Disable TypeScript checking for Next.js page props
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default async function PostPage(props: any) {
+  const { slug } = props.params;
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     notFound();
   }
 
+  // Handle reading time safely
+  const readingTimeDisplay = post.readingTime
+    ? typeof post.readingTime === "object"
+      ? post.readingTime.text || "1 min read"
+      : `${post.readingTime} min read`
+    : null;
+
   return (
-    <div>
-      <main className="flex flex-col w-full">
-        <div
-          className="featured-image"
-          style={{
-            backgroundImage: `url(${post.frontmatter?.featured_image})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            height: `calc(100vh - 400px)`,
-          }}
-        ></div>
-        <div
-          className="w-11/12 lg:w-4/5 xl:w-3/4 bg-white self-center h-60 relative bottom-36"
-          style={{ boxShadow: `0px -20px 20px rgba(0, 0, 0, 0.2)` }}
-        ></div>
-        <div className="w-11/12 lg:w-4/5 xl:w-3/4 px-10 md:px-20 lg:px-20 xl:px-20 self-center relative bottom-72">
-          <h1 className="my-4 text-3xl md:text-5xl font-roboto font-medium text-bensonpink">
-            {post.frontmatter.title}
-          </h1>
-          <AuthorBlob
-            date={new Date(post.frontmatter?.date).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-            image={post.frontmatter?.author_image || siteMetaData.author.image}
-            author={post.frontmatter?.author || siteMetaData.author.name}
-            timeToRead={post.readingTime.text}
-          />
-          <article className="prose max-w-none font-roboto text-lg font text-bensonblack">
-            <Markdown rehypePlugins={[rehypeRaw]}>{post.content}</Markdown>
-          </article>
-          <p className="text-bensonpink text-lg mt-8">
-            Tags:{" "}
-            {post.frontmatter.tags &&
-              post.frontmatter.tags.map((tag: string) => `#${tag} `)}
-          </p>
+    <div className="bg-white dark:bg-gray-900 min-h-screen">
+      {/* Enhanced Header with Text First, Image After */}
+      <header className="relative">
+        <div className="w-full bg-gray-900 pt-20 pb-10 px-4">
+          <div className="container mx-auto px-6 py-12 text-left">
+            {/* First Tag (if available) */}
+            {post.frontmatter?.tags?.length > 0 && (
+              <span className="inline-block px-4 py-1 mb-6 bg-indigo-600/80 text-white rounded-full text-sm font-medium">
+                {post.frontmatter.tags[0]}
+              </span>
+            )}
+
+            {/* Title */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-md">
+              {post.frontmatter?.title ?? "Untitled"}
+            </h1>
+
+            {/* Excerpt/Summary */}
+            <p className="text-white/90 text-lg md:text-xl mx-auto mb-8">
+              {post.frontmatter?.excerpt ?? ""}
+            </p>
+
+            {/* Author, Date, Reading Time */}
+            <div className="flex text-white/80 space-x-4 mb-16">
+              <div className="flex items-center">
+                <span className="text-sm">By {post.frontmatter?.author ?? "Unknown"}</span>
+              </div>
+
+              <div className="flex items-center">
+                <time dateTime={post.frontmatter?.date ?? ""} className="text-sm">
+                  {post.frontmatter?.date
+                    ? new Date(post.frontmatter.date).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })
+                    : "Unknown Date"}
+                </time>
+              </div>
+
+              {readingTimeDisplay && (
+                <div className="flex items-center">
+                  <span className="text-sm">{readingTimeDisplay}</span>
+                </div>
+              )}
+            </div>
+
+            {/* Featured Image After Text */}
+            {post.frontmatter?.featured_image && (
+              <div className="w-full mx-auto h-[50vh] md:h-[60vh] relative rounded-lg overflow-hidden shadow-2xl">
+                <Image
+                  src={post.frontmatter.featured_image}
+                  alt={post.frontmatter.title || "Featured image"}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            )}
+          </div>
         </div>
+
+        {/* Decorative Wave Separator */}
+        <div className="w-full h-16 overflow-hidden">
+          <svg
+            preserveAspectRatio="none"
+            width="100%"
+            height="100%"
+            viewBox="0 0 1200 120"
+            xmlns="http://www.w3.org/2000/svg"
+            className="fill-white dark:fill-gray-900"
+          >
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+          </svg>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="container mx-auto px-4 py-8 max-w-3xl -mt-6 relative z-10">
+        <article className="prose prose-invert lg:prose-lg max-w-none bg-gray-800 rounded-lg shadow-lg p-6 md:p-10">
+          <MDXRemote source={post.content ?? ""} components={{}} />
+        </article>
+
+        {/* Tags Section */}
+        {post.frontmatter?.tags?.length > 0 && (
+          <div className="mt-12 pt-6 border-t border-gray-200 dark:border-gray-700">
+            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Tags</h3>
+            <div className="flex flex-wrap gap-2">
+              {post.frontmatter.tags.map((tag: string) => (
+                <span key={tag} className="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-sm">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
       </main>
     </div>
   );
