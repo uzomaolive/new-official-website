@@ -11,7 +11,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed w-full h-24 shadow-xl bg-white">
+    <nav className="fixed w-full h-24 shadow-xl bg-white" style={{ zIndex: 1 }}>
       <div className="flex justify-between items-center h-full w-full px-4 lg:px-16">
         <Link href='/'>
           <span className="text-2xl font-bold cursor-pointer text-purple-600 "style={{ fontFamily: 'cursive' }}>
@@ -21,16 +21,16 @@ const Navbar = () => {
         <div className="hidden lg:flex pr-10">
           <ul className="flex">
             <li className="ml-10 hover:border-b hover:text-purple-500 text-xl">
-              <Link href="/Home">Home</Link>
+              <Link href="/">Home</Link>
             </li>
             <li className="ml-10 hover:border-b hover:text-purple-500 text-xl">
-              <Link href="/About">About</Link>
+              <Link href="/about">About</Link>
             </li>
             <li className="ml-10 hover:border-b hover:text-purple-500 text-xl">
-              <Link href="/Contact">Contact</Link>
+              <Link href="/contact">Contact</Link>
             </li>
             <li className="ml-10 hover:border-b hover:text-purple-500 text-xl">
-              <Link href="/Blog">Blog</Link>
+              <Link href="/blog">Blog</Link>
             </li>
           </ul>
         </div>
@@ -58,13 +58,13 @@ const Navbar = () => {
               <Link href="/">Home</Link>
             </li>
             <li onClick={() => setMenuOpen(false)} className="py-4 cursor-pointer">
-              <Link href="/About">About</Link>
+              <Link href="/about">About</Link>
             </li>
             <li onClick={() => setMenuOpen(false)} className="py-4 cursor-pointer">
-              <Link href="/Contact">Contact</Link>
+              <Link href="/contact">Contact</Link>
             </li>
             <li onClick={() => setMenuOpen(false)} className="py-4 cursor-pointer">
-              <Link href="/Blog">Blog</Link>
+              <Link href="/blog">Blog</Link>
             </li>
           </ul>
         </div>

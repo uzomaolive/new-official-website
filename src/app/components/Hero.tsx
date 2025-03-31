@@ -28,11 +28,14 @@ const Hero = () => {
 
           {/* Right Side: Image */}
           <div className="flex justify-center lg:justify-end px-4 lg:pr-20">
-            <Image
-              src="/hero-image.jpg" 
-              alt="Olive Uzoma" 
-              className="w-full max-w-[350px] md:max-w-[400px] h-auto object-cover rounded-xl shadow-lg border border-[#1E1E1E]"
-            />
+          <Image
+            src="/hero-image.jpg"
+            alt="Olive Uzoma"
+            width={350} 
+            height={400} 
+            className="w-full max-w-[350px] md:max-w-[400px] h-auto object-cover rounded-xl shadow-lg border border-[#1E1E1E]"
+          />
+
           </div>
         </div>
       </div>
