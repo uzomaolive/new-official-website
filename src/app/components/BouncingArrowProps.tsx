@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 
 interface BouncingArrowProps {
   className?: string;
@@ -8,8 +8,8 @@ interface BouncingArrowProps {
 const BouncingArrow: React.FC<BouncingArrowProps> = ({ className }) => {
   const [color, setColor] = useState("text-black"); // Initial color
 
-  // Array of Tailwind colors
-  const colors = [
+  // Use useMemo to ensure the colors array is stable between renders
+  const colors = useMemo(() => [
     "text-red-500",
     "text-blue-500",
     "text-green-500",
@@ -17,7 +17,7 @@ const BouncingArrow: React.FC<BouncingArrowProps> = ({ className }) => {
     "text-purple-500",
     "text-pink-500",
     "text-indigo-500",
-  ];
+  ], []); // Empty dependency array means this array is created once
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -25,7 +25,7 @@ const BouncingArrow: React.FC<BouncingArrowProps> = ({ className }) => {
     }, 1000);
 
     return () => clearInterval(interval); // Cleanup on unmount
-  }, [colors]); // ✅ Add `colors` as a dependency
+  }, [colors]); // Now colors is stable and won't cause unnecessary re-renders
 
   return (
     <div className="flex justify-center">
