@@ -2,6 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import AuthorBlob from '@/app/components/AuthorBlob';
 import { siteMetaData } from '@/config/siteMetaData';
+import Image from 'next/image';
+
 
 type Post = {
   slug: string;
@@ -28,7 +30,7 @@ export default function BlogPostCard({ post }: { post: Post }) {
     <div role="article" className="bg-white w-full p-8 rounded-md shadow-sm">
       <Link href={`/${post.slug}`}>
         <div className="image-container max-h-52 overflow-hidden">
-          <img src={featured_image} alt="Featured Image" />
+          <Image src={featured_image} alt="Featured Image" layout="responsive" width={500} height={300} />
         </div>
       </Link>
       <h2 className="text-lg font-roboto font-medium text-bensonblack my-2">
