@@ -33,7 +33,7 @@ export default function BlogPostCard({ post }: { post: Post }) {
           <Image src={featured_image} alt="Featured Image" layout="responsive" width={500} height={300} />
         </div>
       </Link>
-      <h2 className="text-lg font-roboto font-medium text-bensonblack my-2">
+      <h2 className="text-lg font-roboto font-medium my-2">
         <Link href={`/${post.slug}`}>{title}</Link>
       </h2>
       <AuthorBlob
@@ -47,7 +47,7 @@ export default function BlogPostCard({ post }: { post: Post }) {
         image={author_image ? author_image : image}
       />
       <p>{post.frontmatter.excerpt}</p>
-      <small className="text-bensonpink">
+      <small className="text-gray-500">
         <Link href={`/${post.slug}`}>Read More...</Link>
       </small>
     </div>
