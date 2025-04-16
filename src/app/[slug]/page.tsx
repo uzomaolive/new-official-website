@@ -65,7 +65,7 @@ export default async function PostPage(props: any) {
     <div className="bg-white dark:bg-gray-900 min-h-screen">
       {/* Enhanced Header with Text First, Image After */}
       <header className="relative">
-        <div className="w-full bg-gray-900 pt-20 pb-10 px-4">
+        <div className="w-full bg-gray-900 pt-20 pb-10 px-[12rem] lg:px-[20rem]">
           <div className="container mx-auto px-6 py-12 text-left">
             {/* First Tag (if available) */}
             {post.frontmatter?.tags?.length > 0 && (
@@ -140,8 +140,8 @@ export default async function PostPage(props: any) {
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-8 max-w-3xl -mt-6 relative z-10">
-        <article className="prose prose-invert lg:prose-lg max-w-none bg-gray-800 rounded-lg shadow-lg p-6 md:p-10">
+      <main className="container mx-auto px-4 py-8 -mt-6 relative z-10">
+        <article className="prose prose-invert lg:prose-lg max-w-none bg-gray-800 rounded-lg shadow-lg p-6 md:p-10 text-gray-200">
           <MDXRemote source={post.content ?? ""} components={{}} />
         </article>
 
