@@ -140,8 +140,8 @@ export default async function PostPage(props: any) {
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-[17rem] py-8 -mt-6 relative z-10">
-        <article className="prose dark:prose-invert lg:prose-lg max-w-none bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 md:p-10 text-gray-800 dark:text-gray-200">
+      <main className="container mx-auto px-[17rem] py-8 -mt-6 relative">
+        <article className="prose dark:prose-invert lg:prose-lg max-w-none bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 md:p-10 text-gray-800 dark:text-gray-200 leading-[2.625]">
           <MDXRemote source={post.content ?? ""} components={{}} />
         </article>
 
