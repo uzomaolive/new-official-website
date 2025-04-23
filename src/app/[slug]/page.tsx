@@ -65,8 +65,8 @@ export default async function PostPage(props: any) {
     <div className="bg-white dark:bg-gray-900 min-h-screen">
       {/* Enhanced Header with Text First, Image After */}
       <header className="relative">
-        <div className="w-full bg-gray-900 pt-20 pb-10 px-4">
-          <div className="container mx-auto px-6 py-12 text-left">
+        <div className="w-full bg-indigo-50 dark:bg-gray-900 pt-20 pb-10 px-[12rem] lg:px-[20rem]">
+          <div className="container mx-auto px-6 pt-12 text-left">
             {/* First Tag (if available) */}
             {post.frontmatter?.tags?.length > 0 && (
               <span className="inline-block px-4 py-1 mb-6 bg-indigo-600/80 text-white rounded-full text-sm font-medium">
@@ -75,17 +75,17 @@ export default async function PostPage(props: any) {
             )}
 
             {/* Title */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-md">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-indigo-900 dark:text-white mb-6 drop-shadow-md">
               {post.frontmatter?.title ?? "Untitled"}
             </h1>
 
             {/* Excerpt/Summary */}
-            <p className="text-white/90 text-lg md:text-xl mx-auto mb-8">
+            <p className="text-indigo-800/90 dark:text-white/90 text-lg md:text-xl mx-auto mb-8">
               {post.frontmatter?.excerpt ?? ""}
             </p>
 
             {/* Author, Date, Reading Time */}
-            <div className="flex text-white/80 space-x-4 mb-16">
+            <div className="flex text-indigo-700/90 dark:text-white/80 space-x-4 mb-16">
               <div className="flex items-center">
                 <span className="text-sm">By {post.frontmatter?.author ?? "Unknown"}</span>
               </div>
@@ -140,8 +140,8 @@ export default async function PostPage(props: any) {
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-8 max-w-3xl -mt-6 relative z-10">
-        <article className="prose prose-invert lg:prose-lg max-w-none bg-gray-800 rounded-lg shadow-lg p-6 md:p-10">
+      <main className="container mx-auto px-[17rem] py-8 -mt-6 relative">
+        <article className="prose dark:prose-invert lg:prose-lg max-w-none bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 md:p-10 text-gray-800 dark:text-gray-200 leading-[2.625]">
           <MDXRemote source={post.content ?? ""} components={{}} />
         </article>
 
@@ -151,7 +151,7 @@ export default async function PostPage(props: any) {
             <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Tags</h3>
             <div className="flex flex-wrap gap-2">
               {post.frontmatter.tags.map((tag: string) => (
-                <span key={tag} className="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-sm">
+                <span key={tag} className="px-3 py-1 bg-indigo-50 dark:bg-gray-800 text-indigo-700 dark:text-white rounded-full text-sm">
                   {tag}
                 </span>
               ))}
